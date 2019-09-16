@@ -1,0 +1,102 @@
+@media (min-width: 1200px){
+  .sidebar-left, .sidebar-right {
+      width: 120px!important;
+  }
+}
+
+@media (min-width: 1200px){
+  .has-sidebar-left .app, .sidebar-left-in .app {
+      margin-left: 120px!important;
+  }
+}
+
+
+
+.bg_yellow{
+  background:yellow;
+}
+.bg_pink{
+  background:pink;
+}
+
+.bg_green{
+  background:green;
+}
+
+.bg_orange{
+  background:orange;
+}
+
+
+
+
+.item-table td{
+  /*width:200px;*/
+  padding:5px;
+  border: 1px solid;
+}
+
+img{
+	max-width: 100%;
+}
+
+.text-left{
+	text-align: left;
+}
+
+.margin-bottom-10{
+	margin-bottom: 10px;
+}
+
+#touxiang img{
+	width:130px;
+	height:130px;
+}
+#user-infos{
+	padding: 20px 0 ;
+}
+
+.width-bg{
+  background:#fff;
+}
+
+
+
+.class-items{
+  position:relative;
+  margin-bottom:10px;
+}
+
+.class-items .img-bg img{
+  width:100%;
+}
+
+.class-items .class-infos{
+  position:absolute;
+  width:100%;
+  height:100%;
+  color:#fff;
+  text-align:left;
+  padding: 10px;
+  box-sizing:border-box;
+  top:0;
+  background:rgba(0,0,0,.5);
+  
+}
+
+.join-btn{
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+}
+
+.user-list.fa-chevron-down{
+  position:absolute;
+  right:10px;
+}
+
+.border{
+  border: 1px solid red;
+  padding: 8px;
+  border-radius: 4px;
+}

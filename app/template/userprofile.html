@@ -1,0 +1,22 @@
+<div class="scrollable section">
+  <div class="scrollable-content ">
+
+    <div class="list-group text-center">
+    	<div class="list-group-item list-group-item-home text-left">
+    		<div id = "user-infos" class="container-fluid width-bg">
+		  		<div >
+		  			<p>手机 ：{{profile_user.get('mobilePhoneNumber') ? profile_user.get('mobilePhoneNumber') : profile_user.get('number')}}</p>
+		        	<p>姓名 ：{{profile_user.get('name')}}</p>
+		        	<p>性别 ：{{profile_user.get('sex')}}</p>
+		        	<p>学校 ：{{profile_user.get('school')}}</p>
+		        	<p>公司 ： {{profile_user.get('company')}}</p>
+		        	<p>行业 ： {{profile_user.get('industry')}}</p>
+		        </div>
+
+		  	</div>
+    	</div>
+    </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="scrollable section">
+  <div class="scrollable-content ">
+  	<div class="list-keywords">
+  		<span ng-class = "keyWordClass(obj)" ng-click = "showUsers(obj)" ng-if = "obj.key" ng-repeat="obj in key_word_objs">{{obj.key}}({{obj.users.length}})</span>
+  	</div>
+
+    <p style = "margin-top: 30px;" ng-if = "obj">您查看行业是 <strong style = "color:red;">{{obj.key}}</strong>, 这个行业有<strong style = "color:red;">{{obj.users.length}}</strong>个校友 </p>
+  	<div class="studentmanage">
+      <div class="studentmanage-content">
+        <div class="list-group">
+
+          <div ng-repeat="user in users" ng-if = "user.get('name')" ng-click = "triggerProfile(user)" class="list-group-item">
+            <span>{{ user.get('name') }} </span>
+            <span>{{ user.get('industry') }}</span>
+
+            
+            <i ng-if = "!user.show" class="fa fa-chevron-down user-list pull-right"></i>
+            
+
+            <div ng-if = "user.show" style = "margin-top:10px;">
+              <p>手机 ：{{user.get('mobilePhoneNumber') ? user.get('mobilePhoneNumber') : user.get('number')}}</p>
+              <p ng-if = "user.get('sex')">性别 ：{{user.get('sex')}}</p>
+              <p ng-if = "user.get('home_town')">家乡 ：{{user.get('home_town')}}</p>
+              <p ng-if = "user.get('graduate_year')">届别 ：{{user.get('graduate_year')}}</p>
+              <p ng-if = "user.get('country')">国家 ：{{user.get('country')}}</p>
+              <p ng-if = "user.get('city')">居住城市 ：{{user.get('city')}}</p>
+              <p ng-if = "user.get('company')">公司 ： {{user.get('company')}}<i ng-if = "user.show" class="fa fa-chevron-up pull-right"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

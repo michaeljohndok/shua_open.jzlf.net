@@ -1,0 +1,167 @@
+<style type="text/css">
+  .input_box{
+    float:left;
+    margin-right:20px;
+  }
+
+  .count .item{
+    float:left;
+    width:200px;
+  }
+
+</style>
+<div class="scrollable section">
+  <div class="scrollable-content ">
+
+    <div ui-content-for="title">
+      <span>传承、融汇、共进</span>
+    </div>
+
+
+
+    <div class="filter" style = "clear:both;overflow: auto;">
+      <div class = "input_box">
+        <div class="form-group has-success has-feedback">
+          <input ng-model-options='{ debounce: 1500 }' type="text" ng-change = "search()" ng-model="search_word" class="form-control" placeholder="智能搜索，输入关键字、或词">
+        </div>
+      </div>
+
+      <div class = "input_box">
+        <div class="form-group has-success has-feedback">
+          <input ng-model-options='{ debounce: 1500 }' type="text" ng-change = "search()" ng-model="search_limit" class="form-control" placeholder="Limit">
+        </div>
+      </div>
+
+      <div class = "input_box">
+          <button ng-click = "addOrder()" class="btn btn-primary btn-block" style = "margin-top:10px;">
+          添加订单
+        </button>
+      </div>
+
+      <div class = "input_box">
+          <button ng-click = "showAccounts()" class="btn btn-primary btn-block" style = "margin-top:10px;">
+          账号金额
+        </button>
+      </div>
+
+    </div>
+
+    启动金额：62800 合计金钱 : {{total_money}}   卡钱 : {{ka_money}}
+
+    <!-- begin 现实账号 -->
+    <div ng-if = "show_accounts">
+      <table class= "item-table" style = "min-width:100%;">
+        <thead>
+          <tr>
+            <td style = "width:40px!important;">
+              ID
+            </td>
+            <td>
+              账号
+            </td>
+            <td style = "width:100px!important;">
+              金钱
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-click = "showIndex($index)" ng-repeat="account in all_accounts track by $index" >
+            <td style = "width:40px!important;">
+              {{$index + 1}}
+            </td>
+            <td>
+              {{account.name}}
+            </td>
+            <td style = "width:100px!important;">
+              {{account.yuer}}
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+    <!-- end 显示账号 -->
+
+    <div ng-if = "!show_accounts">
+
+      <table class= "item-table" style = "min-width:100%;">
+        <thead>
+          <tr>
+            <td style = "width:40px!important;">
+              ID
+            </td>
+            <td>
+              输入
+            </td>
+            <td style = "width:100px!important;">
+              输出
+            </td>
+
+            <td>
+              转出金额
+            </td>
+
+            <td>
+              时间
+            </td>
+
+            <td>
+              备注
+            </td>
+
+            <td>
+              操作
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr ng-click = "showIndex($index)" ng-repeat="order in orders track by $index" ng-class = "zhuangTaiClass(order)">
+            <td>
+              {{$index + 1}}
+            </td>
+            <td>
+              <input ng-change = "saveOrder(order)" type="text" ng-model="order.shuru" class="form-control" placeholder="输入" >
+
+            </td>
+
+            <td>
+              <input ng-change = "saveOrder(order)" type="text" ng-model="order.shuchu" class="form-control" placeholder="输出" >
+
+            </td>
+
+            <td>
+              <div class="form-group has-success has-feedback">
+                <input ng-change = "saveOrder(order)" type="text" ng-model="order.yuer" class="form-control" placeholder="转出金额" >
+              </div>
+            </td>
+
+            <td>
+              {{order.time}}
+            </td>
+
+            <td>
+              <div class="form-group has-success has-feedback">
+                
+
+                <input ng-change = "saveOrder(order)" type="text" ng-model="order.beizhu" class="form-control" placeholder="备注" >
+              </div>
+            </td>
+            <td>
+              <button ng-click = "deleteOrder(order)" class="btn btn-primary btn-block">
+                删除
+              </button>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+
+
+
+  </div>
+</div>
+

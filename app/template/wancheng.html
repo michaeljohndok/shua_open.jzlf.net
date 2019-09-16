@@ -1,0 +1,142 @@
+<div class="scrollable section">
+  <div class="scrollable-content ">
+
+    <div ui-content-for="title">
+      <span>传承、融汇、共进</span>
+    </div>
+
+    <div class="homt-message border" ng-if = "message">
+      {{message.body_text}}
+
+      <button class="btn btn-primary btn-block" ng-click = "msgAction(message)">
+        {{message.btn_text}}
+      </button>
+    </div>
+
+
+
+    <div class="form-group has-success has-feedback">
+      <input ng-model-options='{ debounce: 1500 }' type="text" ng-change = "search()" ng-model="search_word" class="form-control" placeholder="智能搜索，输入关键字、或词">
+    </div>
+
+
+
+    <p>总价：{{zhongjia}}    佣金:{{yongjin}}</p>
+
+    <table class= "item-table">
+      <thead>
+        <tr>
+          <td style = "width:40px!important;">
+            ID
+          </td>
+          <td>
+            淘宝号
+          </td>
+          <td style = "width:100px!important;">
+            价格
+          </td>
+          <td style = "width:100px!important;">
+            平台反
+          </td>
+          <td style = "width:100px!important;">
+            佣金
+          </td>
+          <td style = "width:100px!important;">
+            状态
+          </td>
+
+          <td>
+            关键字
+          </td>
+
+          <td>
+            备注
+          </td>
+
+          <td>
+            操作
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-click = "showIndex($index)" ng-repeat="order in orders track by $index" ng-class = "zhuangTaiClass(order)">
+          <td>
+            {{$index + 1}}
+          </td>
+          <td>
+            <div class="form-group has-success has-feedback">
+                <select ng-change = "saveOrder(order)" ng-model="order.taobao">
+                <option ng-repeat="obj in accounts_obj track by $index" value ="{{obj.taobao}}">{{obj.taobao}}</option>
+              </select>
+            </div>
+
+          </td>
+          <td>
+            <input ng-change = "saveOrder(order)" type="text" ng-model="order.jiage" class="form-control" placeholder="价格" >
+          </td>
+          <td>
+            <input ng-change = "saveOrder(order)" type="text" ng-model="order.pingtaifan" class="form-control" placeholder="平台反" >
+          </td>
+          <td>
+            <input ng-change = "saveOrder(order)" type="text" ng-model="order.yongjin" class="form-control" placeholder="佣金" >
+          </td>
+          <td>
+
+            <div class="form-group has-success has-feedback">
+                <select ng-change = "saveOrder(order)" ng-model="order.zhuangtai">
+                <option value ="下单">下单</option>
+                <option value ="等快递">等快递</option>
+                <option value ="快递到">快递到</option>
+                <option value ="完成">完成</option>
+              </select>
+            </div>
+            
+          </td>
+
+          <td>
+            <div class="form-group has-success has-feedback">
+
+              <input ng-change = "saveOrder(order)" type="text" ng-model="order.guanjianzi" class="form-control" placeholder="关键字" >
+            </div>
+
+            <div class="form-group has-success has-feedback">
+
+              <input ng-change = "saveOrder(order)" type="text" ng-model="order.shangjiaq" class="form-control" placeholder="商家Q" >
+            </div>
+          </td>
+
+          <td>
+            <div class="form-group has-success has-feedback">
+              {{order.time}}
+
+              <input ng-change = "saveOrder(order)" type="text" ng-model="order.beizhu" class="form-control" placeholder="备注" >
+            </div>
+
+            <div class="pingyu" ng-if = "show_index == $index">
+
+
+              
+              <textarea ng-change = "saveOrder(order)" type="text" ng-model="order.pinglun" class="form-control" placeholder="评论" >
+                
+              </textarea>
+            </div>
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+
+
+
+    <button ng-if = "!load_more_end && !search_word" ng-click = "user_load_more()" class="btn btn-primary btn-block">
+      更多
+    </button>
+
+
+  </div>
+</div>
+

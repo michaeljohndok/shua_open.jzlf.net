@@ -1,0 +1,41 @@
+<div class="scrollable ">
+  <div class="scrollable-content width-bg">
+	<div class="wrapped-content">
+		<input type="file" id="file" name="file"/>
+		<button ng-click="add()">Add</button>
+    
+	</div>
+
+
+    <script>
+        // var choose = document.getElementById('choose');
+        // FileAPI.event.on(choose, 'change', function (evt){
+        //     var files = FileAPI.getFiles(evt); // Retrieve file list
+
+        //     FileAPI.filterFiles(files, function (file, info/**Object*/){
+        //         if( /^image/.test(file.type) ){
+        //             return  info.width >= 320 && info.height >= 240;
+        //         }
+        //         return  false;
+        //     }, function (files/**Array*/, rejected/**Array*/){
+        //         if( files.length ){
+        //             // Make preview 100x100
+        //             FileAPI.each(files, function (file){
+        //                 FileAPI.Image(file).preview(100).get(function (err, img){
+        //                     images.appendChild(img);
+        //                 });
+        //             });
+
+        //             // Uploading Files
+        //             FileAPI.upload({
+        //                 url: './ctrl.php',
+        //                 files: { images: files },
+        //                 progress: function (evt){ /* ... */ },
+        //                 complete: function (err, xhr){ /* ... */ }
+        //             });
+        //         }
+        //     });
+        // });
+    </script>
+  </div>
+</div>

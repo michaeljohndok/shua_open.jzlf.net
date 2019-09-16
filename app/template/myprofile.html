@@ -1,0 +1,157 @@
+<div class="scrollable section">
+  <div class="scrollable-content ">
+
+
+  	<!-- show user infos -->
+    <div class="list-group text-center" ng-if = "show_profile">
+    	<div class="list-group-item list-group-item-home text-left">
+    		<div id = "user-infos" class="container-fluid width-bg">
+		  		<div >
+		  			<p>手机 ：{{user.get('mobilePhoneNumber') ? user.get('mobilePhoneNumber') : user.get('number')}}</p>
+		        	<p>姓名 ：{{user.get('name')}}</p>
+		        	<p>性别 ：{{user.get('sex')}}</p>
+		        	<p>学校 ：{{user.get('school')}}</p>
+		        	<p>公司 ： {{user.get('company')}}</p>
+		        	<p>行业 ： {{user.get('industry')}}</p>
+		        </div>
+
+		  	</div>
+    	</div>
+
+    	<button ng-click = "showEditProfile()" class="btn btn-primary btn-block">
+	      编辑档案
+	    </button>
+    </div>
+
+    <!-- have profile data. ask if import -->
+    <div class="list-group text-center" ng-if = "show_import">
+    	<div class="list-group-item list-group-item-home text-left">
+    		<div id = "user-infos" class="container-fluid width-bg">
+		  		<div >
+		  			<p>手机 ：{{profile.get('mobilePhoneNumber')}}</p>
+		        	<p>姓名 ：{{profile.get('name')}}</p>
+		        	<p>性别 ：{{profile.get('sex')}}</p>
+		        	<p>学校 ：{{profile.get('school')}}</p>
+		        	<p>公司 ： {{profile.get('company')}}</p>
+		        	<p>行业 ： {{profile.get('industry')}}</p>
+		        </div>
+
+		  	</div>
+    	</div>
+
+    	<p>根据你的电话号码，在我们数据找到您的这条信息，需要导入到您的个人档案吗？</p>
+    	<button ng-click = "importProfile()" class="btn btn-primary btn-block">
+	      导入
+	    </button>
+
+	    <button ng-click = "cancel()" class="btn btn-primary btn-block">
+	      取消
+	    </button>
+    </div>
+
+
+
+    <!-- user data empy show input form -->
+    <div class="list-group text-center" ng-if = "show_edit_form">
+	    <div class="list-group-item list-group-item-home text-left">
+	    	<p ng-if = "!user_data.name">你还没设置个人信息，请完善个人信息</p>
+
+    		<div class="container-fluid width-bg">
+			    <fieldset>
+			      <legend>个人信息</legend>
+			      	<div class="form-group has-success has-feedback">
+			          <label>手机</label>
+			          <input type="text" ng-model="user_data.mobile" class="form-control" placeholder="手机" disabled="">
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			          <label>姓名</label>
+			          <input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="text" ng-model="user_data.name" class="form-control" placeholder="姓名">
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			        	<label>
+							<input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="radio" ng-model="user_data.sex" value="男">
+							男
+						</label>
+						<label>
+							<input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="radio" ng-model="user_data.sex" value="女">
+						    女
+						</label>
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			        	<label>台山一中毕业时间</label>
+			        	<select ng-change = "saveProfile()" ng-model="user_data.graduate_year">
+						  <option value ="{{year}}" ng-repeat="year in graduate_year">{{year}}</option>
+						</select>
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+				        <label>
+							<input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="radio" ng-model="user_data.graduate_type" value="高中">
+						    高中
+						</label>
+			        	<label>
+							<input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="radio" ng-model="user_data.graduate_type" value="初中">
+							初中
+						</label>
+						
+			        </div>
+
+
+			        <div class="form-group has-success has-feedback">
+			          <label>公司</label>
+			          <input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="text" ng-model="user_data.company" class="form-control" placeholder="公司">
+			        </div>
+
+			       	<div class="form-group has-success has-feedback">
+			          <label>行业</label>
+			          <input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }' type="text" ng-model="user_data.industry" class="form-control" placeholder="行业">
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			        	<label>家乡</label>
+			        	<select ng-change = "saveProfile()" ng-model="user_data.home_town">
+						  <option value ="台城镇">台城镇</option>
+						  <option value ="大江镇">大江镇</option>
+						  <option value ="水步镇">水步镇</option>
+						  <option value ="四九镇">四九镇</option>
+						  <option value ="都斛镇">都斛镇</option>
+						  <option value ="赤溪镇">赤溪镇</option>
+						  <option value ="冲蒌镇">冲蒌镇</option>
+						  <option value ="斗山镇">斗山镇</option>
+						  <option value ="广海镇">广海镇</option>
+						  <option value ="川岛镇">川岛镇</option>
+						  <option value ="端芬镇">端芬镇</option>
+						  <option value ="海宴镇">海宴镇</option>
+						  <option value ="汶村镇">汶村镇</option>
+						  <option value ="三合镇">三合镇</option>
+						  <option value ="北陡镇">北陡镇</option>
+						  <option value ="深井镇">深井镇</option>
+						  <option value ="白沙镇">白沙镇</option>
+						</select>
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			          <label>现居住国家</label>
+			          <input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="text" ng-model="user_data.country" class="form-control" placeholder="现在国家">
+			        </div>
+
+			        <div class="form-group has-success has-feedback">
+			          <label>现居住城市</label>
+			          <input ng-change = "saveProfile()" ng-model-options='{ debounce: 1500 }'  type="text" ng-model="user_data.city" class="form-control" placeholder="城市">
+			        </div>			        
+
+			    </fieldset>
+			    <hr>
+
+			    <button ng-click = "goHome()" class="btn btn-primary btn-block">
+			      去首页
+			    </button>
+			</div>
+		</div>
+    </div>
+
+  </div>
+</div>
